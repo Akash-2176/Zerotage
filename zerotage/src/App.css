@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'MyCustomFont'; /* Choose a name for your font */
+  src: url('./assets/Inconsolata.otf') format('truetype'); /* If inside public folder */
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'MyCustomFont';
+  background-color: #ffe6a7;
+  background-image:url("./assets/bg_image.jpeg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+  background-position-y:bottom ;
+  color:#f7f5f3;
+  margin: 0;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.app-header {
+  margin-top:20px;
+  justify-self: center;
+  align-self: center;
+}
+
+.container {
+  width: fit-content;
+  margin: 100px;
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background: rgba(255, 255, 255, 0); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* BLUR EFFECT */
+  -webkit-backdrop-filter: blur(10px); /* Safari Support */
+}
+
+
+.upload-box {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: fit-content;
+  align-items: center;
+  justify-items: center;
+}
+
+.video-preview {
+  width: 40%;
+  margin-top: 10px;
+  border-radius: 8px;
+  display:flex;
+  background-color: #0f0f0f;
+}
+
+input[type="file"] {
+  display: none; /* Hide the default file input */
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  background: rgba(255, 255, 255, 0); 
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  border-radius: 8px;
+  backdrop-filter: blur(10px); /* BLUR EFFECT */
+  -webkit-backdrop-filter: blur(10px); /* Safari Support */
+}
+
+.custom-file-upload:hover {
+  background-color: #ffffff63;
+}
+
+
+
+.results-box {
+  margin-top: 20px;
+  padding: 20px;
+  background: #be95c40e;
+  border:1px solid #f7f5f38e;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-button{
+  height:50px;
+  width:90px;
+  background-color: #0f0f0f;
+}
+
+/* table {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 2px solid #432818;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #bb9457;
+}
+
+.table-image {
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+} */
+
+table {
+  width: 100%;
+  border-collapse: separate; /* Allows border-radius to work */
+  border-spacing: 0; /* Prevents gaps between cells */
+  border-radius: 10px; /* Rounds the corners */
+  overflow: hidden; /* Ensures rounded corners apply properly */
+}
+
+th, td {
+  border: 1px solid #e0b1cb5d;
+  padding: 8px;
+  text-align: center;
+  object-fit: cover;
+}
+
+th {
+  background-color: #9f86c033;
+  color: white;
+}
+
+/* Round only the top corners of the table */
+th:first-child {
+  border-top-left-radius: 10px;
+}
+th:last-child {
+  border-top-right-radius: 10px;
+}
+
+/* Round only the bottom corners of the table */
+tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}

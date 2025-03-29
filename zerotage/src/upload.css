@@ -1,0 +1,131 @@
+@keyframes slideInLeft {
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ddd8d8;
+}
+
+.close-btn:hover {
+  color: #eeeaea96;
+}
+
+.upload-box {
+    text-align: center;
+    padding: 30px;
+    animation: slideInLeft 1s ease-out forwards;
+    font-size: 1.5rem;
+}
+
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+.app-header {
+    font-size: 120px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    opacity: 0;
+    animation: slideIn 1s ease-out forwards;
+}
+
+.header {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.file-input {
+    margin-bottom: 20px;
+}
+
+/* Increased Video Size */
+.video-preview {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.results-container {
+    margin-top: 20px;
+}
+
+/* Increased Table Size */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1.3rem;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+.results-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Increased Image Size in Table */
+.table-image {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top-color:rgba(240, 227, 247, 0.4);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-container p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
