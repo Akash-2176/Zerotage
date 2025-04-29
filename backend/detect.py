@@ -1,6 +1,5 @@
 import os
 import cv2
-import torch
 import numpy as np
 import argparse
 import subprocess
@@ -62,6 +61,7 @@ def process_video(video_path):
     frame_count = 0
 
     plate_filenames = []  # Store detected plate file paths for batch processing
+    vehicle_plate_mapping = []  # List to store vehicle and plate mapping
 
     while cap.isOpened():
         ret, frame = cap.read()
@@ -125,10 +125,22 @@ def process_video(video_path):
                 plate_filename = f"{OUTPUT_DIR}/plate_{frame_count}_{i}_{j}.png"
                 cv2.imwrite(plate_filename, plate_crop)
                 plate_filenames.append(plate_filename)
-                print(f"✅ Saved plate: {plate_filename}")
+
+                # Map the vehicle to the detected plate
+                vehicle_plate_mapping.append({
+                    "vehicle_id": f"vehicle_{frame_count}_{i}",
+                    "plate_filename": plate_filename,
+                    "vehicle_coordinates": (x1, y1, x2, y2),
+                    "plate_coordinates": (px1, py1, px2, py2),
+                    "frame_number": frame_count,
+                    "plate_text": plate.get("label", "Unknown")  # Assuming OCR result returns label
+                })
+
+                print(f"✅ Saved plate: {plate_filename} for vehicle {frame_count}_{i}")
 
     cap.release()
 
+    # Process detected plates
     if plate_filenames:
         print("🔄 Preprocessing detected license plates...")
         preprocess_images(plate_filenames, PREPROCESS_DIR)
@@ -137,6 +149,11 @@ def process_video(video_path):
         subprocess.run([sys.executable, "ocr.py"])  # Automatically executes OCR
 
     print("🎉 Detection & OCR process complete!")
+
+    # Optionally save the vehicle-plate mapping for later use
+    with open(f"{OUTPUT_DIR}/vehicle_plate_mapping.json", "w") as f:
+        import json
+        json.dump(vehicle_plate_mapping, f, indent=4)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="License Plate Detection from Video")

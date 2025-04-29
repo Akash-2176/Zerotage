@@ -12,15 +12,14 @@ def preprocess_images(image_paths, output_dir):
             print(f"❌ Could not read {image_path}, skipping...")
             continue
 
-        # Resize to maintain aspect ratio
+        
         height, width = img.shape
         new_width = int((100 / height) * width)
         img = cv2.resize(img, (new_width, 50))
 
-        # Apply simple binary thresholding
         _, processed_img = cv2.threshold(img, 150, 255, cv2.THRESH_BINARY)
 
-        # Save processed image
+        
         filename = os.path.basename(image_path)
         save_path = os.path.join(output_dir, f"processed_{filename}")
         cv2.imwrite(save_path, processed_img)

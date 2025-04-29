@@ -1,0 +1,110 @@
+[
+    {
+        "vehicle_id": "vehicle_90_0",
+        "plate_filename": "results/plate_90_0_0.png",
+        "vehicle_coordinates": [
+            657,
+            248,
+            899,
+            449
+        ],
+        "plate_coordinates": [
+            74,
+            132,
+            130,
+            146
+        ],
+        "frame_number": 90,
+        "plate_text": "Unknown"
+    },
+    {
+        "vehicle_id": "vehicle_210_0",
+        "plate_filename": "results/plate_210_0_0.png",
+        "vehicle_coordinates": [
+            540,
+            219,
+            962,
+            584
+        ],
+        "plate_coordinates": [
+            169,
+            246,
+            251,
+            266
+        ],
+        "frame_number": 210,
+        "plate_text": "Unknown"
+    },
+    {
+        "vehicle_id": "vehicle_240_0",
+        "plate_filename": "results/plate_240_0_0.png",
+        "vehicle_coordinates": [
+            411,
+            208,
+            940,
+            637
+        ],
+        "plate_coordinates": [
+            173,
+            290,
+            267,
+            312
+        ],
+        "frame_number": 240,
+        "plate_text": "Unknown"
+    },
+    {
+        "vehicle_id": "vehicle_240_0",
+        "plate_filename": "results/plate_240_0_1.png",
+        "vehicle_coordinates": [
+            411,
+            208,
+            940,
+            637
+        ],
+        "plate_coordinates": [
+            413,
+            347,
+            457,
+            369
+        ],
+        "frame_number": 240,
+        "plate_text": "Unknown"
+    },
+    {
+        "vehicle_id": "vehicle_360_0",
+        "plate_filename": "results/plate_360_0_0.png",
+        "vehicle_coordinates": [
+            900,
+            244,
+            1172,
+            518
+        ],
+        "plate_coordinates": [
+            100,
+            116,
+            182,
+            152
+        ],
+        "frame_number": 360,
+        "plate_text": "Unknown"
+    },
+    {
+        "vehicle_id": "vehicle_630_1",
+        "plate_filename": "results/plate_630_1_0.png",
+        "vehicle_coordinates": [
+            234,
+            247,
+            843,
+            709
+        ],
+        "plate_coordinates": [
+            179,
+            336,
+            365,
+            376
+        ],
+        "frame_number": 630,
+        "plate_text": "Unknown"
+    }
+]

@@ -6,18 +6,16 @@ export default function Upload() {
   const [carsDetected, setCarsDetected] = useState(0);
   const [results, setResults] = useState([]);
   const [fileUploaded, setFileUploaded] = useState(false);
-  const [loading, setLoading] = useState(false); // New state for loader
+  const [loading, setLoading] = useState(false);
 
-  // Function to upload the video and get the response
   const handleUpload = async (event) => {
     const file = event.target.files[0];
     if (file) {
       const videoURL = URL.createObjectURL(file);
       setVideo(videoURL);
       setFileUploaded(true);
-      setLoading(true); // Show loader when uploading starts
+      setLoading(true);
 
-      // Create form data and send to API
       const formData = new FormData();
       formData.append("video", file);
 
@@ -32,21 +30,28 @@ export default function Upload() {
         }
 
         const data = await response.json();
+        const vehicleMapping = {};
 
-        // Process the response from the backend
-        const vehicles = data.vehicles.map((vehicle, index) => ({
-          id: index + 1,
-          screenshot: vehicle,
-          enhanced: data.preprocessed_plates[index] || "",
-          license: data.ocr_results[Object.keys(data.ocr_results)[index]] || "No License Plate Detected",
-        }));
+        data.plates.forEach((plate, index) => {
+          const plateKey = plate.match(/plate_(\d+)_/)[1];
+          if (!vehicleMapping[plateKey]) vehicleMapping[plateKey] = [];
 
-        setResults(vehicles);
-        setCarsDetected(vehicles.length);
+          vehicleMapping[plateKey].push({
+            screenshot: data.vehicles.find((v) => v.includes(`vehicle_${plateKey}`)) || "",
+            plate: plate,
+            enhanced: data.preprocessed_plates[index] || "",
+            license: data.ocr_results[Object.keys(data.ocr_results)[index]] || "No License Plate Detected",
+          });
+        });
+
+        const formattedResults = Object.values(vehicleMapping).flat();
+
+        setResults(formattedResults);
+        setCarsDetected(formattedResults.length);
       } catch (error) {
         console.error("Error uploading video:", error);
       } finally {
-        setLoading(false); // Hide loader when response is received
+        setLoading(false);
       }
     }
   };
@@ -106,8 +111,8 @@ export default function Upload() {
                 </tr>
               </thead>
               <tbody>
-                {results.map((car) => (
-                  <tr key={car.id}>
+                {results.map((car, index) => (
+                  <tr key={index}>
                     <td>
                       <img
                         src={car.screenshot}
